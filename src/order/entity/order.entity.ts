@@ -23,7 +23,7 @@ export class OrderDto {
   @Type(() => Number)
   id: number;
 
-  // @IsEnum(OrderStatus)
+  @IsEnum(OrderStatus)
   status: OrderStatus;
 
   @IsNumber()

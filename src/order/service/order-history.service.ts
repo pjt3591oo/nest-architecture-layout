@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { OrderHistoryReader } from '../provider/order-history-reader';
-import { OrderHistoryCreater } from '../provider/order-history-creater';
-import { OrderHistoryUpdater } from '../provider/order-history-updater';
-import { OrderHistoryDeleter } from '../provider/order-history-deleter';
+import { ReadAllOrderHistoryResDto } from '../dto/order-history/read-all-order-history.dto';
+import { PaginationQueryReqDto } from 'src/common/dto/pagination-query.dto';
 
 @Injectable()
 export class OrderHistoryService {
-  constructor(
-    private readonly orderHistoryReader: OrderHistoryReader,
-    private readonly orderHistoryCreater: OrderHistoryCreater,
-    private readonly orderHistoryUpdater: OrderHistoryUpdater,
-    private readonly orderHistoryDeleter: OrderHistoryDeleter,
-  ) {}
+  constructor(private readonly orderHistoryReader: OrderHistoryReader) {}
+
+  async readAllOrderHistory(
+    orderId: number,
+    query: PaginationQueryReqDto,
+  ): Promise<ReadAllOrderHistoryResDto[]> {
+    return await this.orderHistoryReader.readAllByOrderId(orderId, query);
+  }
 }

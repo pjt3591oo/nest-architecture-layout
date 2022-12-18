@@ -4,7 +4,6 @@ import { Module } from '@nestjs/common';
 import { OrderModule } from './order/order.module';
 import { validate } from './common/config/env.validation';
 import * as path from 'path';
-import { DatabaseModule } from './common/database/database.module';
 
 @Module({
   imports: [
@@ -13,7 +12,6 @@ import { DatabaseModule } from './common/database/database.module';
       validate,
       envFilePath: path.resolve(__dirname, '../.env'),
     }),
-    DatabaseModule,
     OrderModule,
   ],
   controllers: [],

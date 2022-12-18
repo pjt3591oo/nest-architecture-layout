@@ -17,9 +17,11 @@ import { OrderHistoryDeleter } from './provider/order-history-deleter';
 import { OrderRepository } from './repository/order.repository';
 import { OrderHistoryRepository } from './repository/order-history.repository';
 import { TypeOrmRepositoryModule } from 'src/common/decorator/database/repository.module';
+import { DatabaseModule } from 'src/common/database/database.module';
 
 @Module({
   imports: [
+    DatabaseModule,
     TypeOrmRepositoryModule.forFeatures([
       OrderRepository,
       OrderHistoryRepository,

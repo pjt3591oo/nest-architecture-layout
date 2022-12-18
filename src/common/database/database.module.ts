@@ -18,7 +18,7 @@ import { EnvKey } from '../config/env.validation';
         password: config.get(EnvKey.DB_PASSWORD),
         synchronize: false,
         logging: false,
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        entities: [__dirname + '/../../**/*.entity{.ts,.js}'],
         charset: 'utf8mb4_bin',
       }),
     }),
